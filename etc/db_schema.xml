@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="osc_sample_category" resource="default" engine="innodb" comment="osc_sample_category Table">
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <column name="category_name" nullable="true" xsi:type="varchar" comment="Category Name" length="255"/>
+    </table>
+
+    <table name="osc_sample_subcategory" resource="default" engine="innodb" comment="osc_sample_subcategory Table">
+        <column xsi:type="int" name="subcategory_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="subcategory_id"/>
+        </constraint>
+        <column name="subcategory_name" nullable="true" xsi:type="varchar" comment="Subcategory Name" length="255"/>
+        <column name="subcategory_image" nullable="true" xsi:type="varchar" comment="Subcategory Image" length="255"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="true" comment="Category Id"/>
+        <constraint xsi:type="foreign" referenceId="FK_CATEGORY_ID" table="osc_sample_subcategory"
+                    column="category_id" referenceTable="osc_sample_category" referenceColumn="category_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

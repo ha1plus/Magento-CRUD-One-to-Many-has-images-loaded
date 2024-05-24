@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Osc\Sample\Api\CategoryRepositoryInterface" type="Osc\Sample\Model\CategoryRepository"/>
+	<preference for="Osc\Sample\Api\Data\CategoryInterface" type="Osc\Sample\Model\Category"/>
+	<preference for="Osc\Sample\Api\Data\CategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Osc\Sample\Model\ResourceModel\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">osc_sample_category</argument>
+			<argument name="resourceModel" xsi:type="string">Osc\Sample\Model\ResourceModel\Category\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="osc_sample_category_listing_data_source" xsi:type="string">Osc\Sample\Model\ResourceModel\Category\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <preference for="Osc\Sample\Api\SubCategoryRepositoryInterface" type="Osc\Sample\Model\SubCategoryRepository"/>
+    <preference for="Osc\Sample\Api\Data\SubCategoryInterface" type="Osc\Sample\Model\SubCategory"/>
+    <preference for="Osc\Sample\Api\Data\SubCategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Osc\Sample\Model\ResourceModel\SubCategory\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">osc_sample_subcategory</argument>
+            <argument name="eventPrefix" xsi:type="string">packages_ui_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">packages_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Osc\Sample\Model\ResourceModel\SubCategory\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="osc_sample_subcategory_listing_data_source" xsi:type="string">Osc\Sample\Model\ResourceModel\SubCategory\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Osc::top_level" title="Osc" module="Osc_Sample" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Osc_Sample::osc_sample_category" title="Category" module="Osc_Sample" sortOrder="9998" resource="Magento_Backend::content" parent="Osc::top_level" action="osc_sample/category/index"/>
+        <add id="Osc_Sample::osc_sample_subcategory" title="SubCategory" module="Osc_Sample" sortOrder="9999" resource="Magento_Backend::content" parent="Osc::top_level" action="osc_sample/subcategory/index"/>
+	</menu>
+</config>

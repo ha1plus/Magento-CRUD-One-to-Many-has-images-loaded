@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">osc_sample_subcategory_listing.osc_sample_subcategory_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>osc_sample_subcategory_columns</spinner>
+        <deps>
+            <dep>osc_sample_subcategory_listing.osc_sample_subcategory_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new SubCategory</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="osc_sample_subcategory_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">subcategory_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Osc_Sample::SubCategory</aclResource>
+        <dataProvider name="osc_sample_subcategory_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>subcategory_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="osc_sample_subcategory_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>subcategory_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="subcategory_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="subcategory_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">subcategory_id</label>
+            </settings>
+        </column>
+<!--        <settings>-->
+<!--            <editorConfig>-->
+<!--                <param name="selectProvider" xsi:type="string">osc_sample_subcategory_listing.osc_sample_subcategory_listing.osc_sample_subcategory_columns.ids</param>-->
+<!--                <param name="enabled" xsi:type="boolean">true</param>-->
+<!--                <param name="indexField" xsi:type="string">subcategory_id</param>-->
+<!--                <param name="clientConfig" xsi:type="array">-->
+<!--                    <item name="saveUrl" xsi:type="url" path="osc_sample/SubCategory/inlineEdit"/>-->
+<!--                    <item name="validateBeforeSave" xsi:type="boolean">false</item>-->
+<!--                </param>-->
+<!--            </editorConfig>-->
+<!--            <childDefaults>-->
+<!--                <param name="fieldAction" xsi:type="array">-->
+<!--                    <item name="provider" xsi:type="string">osc_sample_subcategory_listing.osc_sample_subcategory_listing.osc_sample_subcategory_columns_editor</item>-->
+<!--                    <item name="target" xsi:type="string">startEdit</item>-->
+<!--                    <item name="params" xsi:type="array">-->
+<!--                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>-->
+<!--                        <item name="1" xsi:type="boolean">true</item>-->
+<!--                    </item>-->
+<!--                </param>-->
+<!--            </childDefaults>-->
+<!--        </settings>-->
+        <column name="subcategory_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">subcategory_name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="subcategory_image" class="Osc\Sample\Ui\Component\Listing\Column\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="filter" xsi:type="string">textarea</item>
+                    <item name="label" translate="true" xsi:type="string">Image</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="altField" xsi:type="string">name</item>
+                </item>
+            </argument>
+        </column>
+<!--        <column name="category_id">-->
+<!--            <settings>-->
+<!--                <filter>text</filter>-->
+<!--                <label translate="true">category_id</label>-->
+<!--                <editor>-->
+<!--                    <editorType>text</editorType>-->
+<!--                    <validation>-->
+<!--                        <rule name="required-entry" xsi:type="boolean">false</rule>-->
+<!--                    </validation>-->
+<!--                </editor>-->
+<!--            </settings>-->
+<!--        </column>-->
+        <column name="category_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Category Name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Osc\Sample\Ui\Component\Listing\Column\SubCategoryActions">
+            <settings>
+                <indexField>subcategory_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
