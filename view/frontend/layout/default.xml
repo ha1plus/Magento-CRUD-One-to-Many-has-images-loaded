@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove the default welcome message -->
+        <referenceBlock name="header" remove="true"/>
+
+        <!-- Remove the existing register link -->
+        <referenceBlock name="register-link" remove="true"/>
+
+        <!-- Remove the existing sign-in link -->
+        <referenceBlock name="authorization-link-login" remove="true"/>
+
+        <!-- Add a new custom register link -->
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-register-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Register</argument>
+                    <argument name="path" xsi:type="string">customer/account/create</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <!-- Add a custom sign-in link -->
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-signin-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Sign In</argument>
+                    <argument name="path" xsi:type="string">customer/account/login</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <!-- Add a custom background color class to the header container -->
+        <referenceContainer name="header.container">
+            <container name="custom-header-container" htmlTag="div" htmlClass="custom-header-bg">
+                <!-- Add your header blocks or other content here if needed -->
+            </container>
+        </referenceContainer>
+    </body>
+</page>

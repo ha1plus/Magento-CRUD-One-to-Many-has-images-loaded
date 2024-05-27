@@ -35,4 +35,5 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Magento\Theme\Model\Favicon\Favicon" type="Osc\Sample\Model\Favicon\Favicon" />
 </config>
